@@ -1,0 +1,30 @@
+{
+  "name": "review-service",
+  "profiles": [
+    "docker"
+  ],
+  "label": null,
+  "version": null,
+  "propertySources": [
+    {
+      "name": "file:/config-repo/application.yml#docker",
+      "source": {
+        "spring.profiles": "docker",
+        "server.port": 8080,
+        "spring.rabbitmq.host": "rabbitmq",
+        "eureka.instance.preferIpAddress": true,
+        "eureka.client.serviceUrl.defaultZone": "http://discovery:8761/eureka/"
+      }
+    },
+    {
+      "name": "file:/config-repo/review-service.yml",
+      "source": {
+        "service": "",
+        "my-secret-property": "my-secret-value"
+      }
+    },
+    {
+      "name": "file:/config-repo/application.yml",
+      "source": {
+        "server.port": 0,
+        "service.defaultMinMs": 5,
